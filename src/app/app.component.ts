@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { randomColor, randomIntFromInterval } from 'src/shared/random';
-import { uniqueId } from 'src/shared/unique-id';
+import { greaterOf, lesserOf, uniqueId } from 'src/shared/unique-id';
 import { IBox } from './app.component.d';
 
 @Component({
@@ -72,6 +72,9 @@ export class AppComponent {
         return;
       }
 
+      const currentY = this.boxes[selectedBoxIndex].position.y;
+      const currentX = this.boxes[selectedBoxIndex].position.x;
+
       // For Delete Key Press
       if (event.code === 'Delete') {
         this.boxes.splice(selectedBoxIndex, 1);
@@ -79,22 +82,22 @@ export class AppComponent {
 
       // For 'W' Key Press
       if (event.code === 'KeyW' || event.code === 'ArrowUp') {
-        this.boxes[selectedBoxIndex].position.y -= event.shiftKey ? 5 : 1;
+        this.boxes[selectedBoxIndex].position.y = greaterOf(0, currentY - (event.shiftKey ? 5 : 1));
       }
 
       // For 'A' Key Press
       if (event.code === 'KeyA' || event.code === 'ArrowLeft') {
-        this.boxes[selectedBoxIndex].position.x -= event.shiftKey ? 5 : 1;
+        this.boxes[selectedBoxIndex].position.x = greaterOf(0, currentX - (event.shiftKey ? 5 : 1));
       }
 
       // For 'S' Key Press
       if (event.code === 'KeyS' || event.code === 'ArrowDown') {
-        this.boxes[selectedBoxIndex].position.y += event.shiftKey ? 5 : 1;
+        this.boxes[selectedBoxIndex].position.y = lesserOf(500, currentY + (event.shiftKey ? 5 : 1));
       }
 
       // For 'D' Key Press
       if (event.code === 'KeyD' || event.code === 'ArrowRight') {
-        this.boxes[selectedBoxIndex].position.x += event.shiftKey ? 5 : 1;
+        this.boxes[selectedBoxIndex].position.x = lesserOf(800, currentX + (event.shiftKey ? 5 : 1));
       }
     };
   }

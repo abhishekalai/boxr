@@ -56,4 +56,17 @@ export class BoxAreaComponent implements OnInit {
     }
     return '2px solid '.concat(boxState.bgColor);
   }
+
+  getBoxWidth(boxState: IBox) {
+    if (boxState.selected) {
+      return '96px';
+    }
+    return '100px';
+  }
+  getBoxHeight(boxState: IBox) {
+    if (boxState.selected) {
+      return '96px';
+    }
+    return '100px';
+  }
 }

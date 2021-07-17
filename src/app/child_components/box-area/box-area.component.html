@@ -4,6 +4,8 @@
     class="box-element"
     id="{{ boxState.id }}"
     [style.border]="getBorderColor(boxState)"
+    [style.width]="getBoxWidth(boxState)"
+    [style.height]="getBoxHeight(boxState)"
     [style.background]="boxState.bgColor"
     [style.zIndex]="boxState.zIndex"
     [style.top]="boxState.position.y.toString().concat('px')"
