@@ -3,21 +3,49 @@
 <!-- Main Application -->
 <div class="app-container">
   <!-- Menu & Console Area-->
-  <div style="width: 25%;" class="app-content-area app-controls-area">
-    <button class="btn btn-primary btn-block" (click)="addBox()">&plus; Add a Box</button>
+  <div style="width: 25%" class="app-content-area app-controls-area">
+    <button class="btn btn-success btn-block" (click)="addBox()">
+      &plus; Add a Box
+    </button>
 
-    <button *ngIf="keyboardEventsEnabled; else kbEventsElse" class="btn btn-danger btn-block" (click)="toggleKeyboardControls()">Disable Keyboard Controls</button>
+    <button
+      *ngIf="keyboardEventsEnabled; else kbEventsElse"
+      class="btn btn-danger btn-block"
+      (click)="toggleKeyboardControls()"
+    >
+      Disable Keyboard Controls
+    </button>
 
     <ng-template #kbEventsElse>
-      <button class="btn btn-primary btn-block" (click)="toggleKeyboardControls()">Enable Keyboard Controls</button>
+      <button
+        class="btn btn-primary btn-block"
+        (click)="toggleKeyboardControls()"
+      >
+        Enable Keyboard Controls
+      </button>
     </ng-template>
 
-    <app-log-area [logs]="_logs" style="height: 80%;"></app-log-area>
+    <p></p>
+    <ul>
+      <li>Select a box by clicking it</li>
+      <li>You can move around a box using the 'W-A-S-D' or Arrow Keys</li>
+      <li>
+        Using the Shift key with the movement keys moves the box a bit faster
+      </li>
+      <li>
+        Using the Shift key with the movement keys moves the box a bit faster
+      </li>
+    </ul>
   </div>
 
   <!-- Separator -->
   <div style="border-right: 2px solid grey"></div>
 
   <!-- Box Playground -->
-  <div style="width: 65%;" class="app-content-area"></div>
+  <div style="width: 900px; height: 600px" class="app-content-area">
+    <app-box-area
+      [boxes]="boxes"
+      [keyboardEventsEnabled]="keyboardEventsEnabled"
+    ></app-box-area>
+  </div>
 </div>

@@ -1,0 +1,22 @@
+.box-area {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: #eae6e6;
+  position: fixed;
+}
+
+.box-element {
+  cursor: pointer;
+  display: block;
+  position: absolute;
+  border-radius: 1rem;
+  width: 100px;
+  height: 100px;
+}
+
+.box-element-selected {
+  border: 2px solid #0047AB;
+  width: 96px;
+  height: 96px;
+}

@@ -3,6 +3,7 @@ export interface IBox {
   position: ICoordinates;
   zIndex: number;
   bgColor: string;
+  selected: boolean;
 }
 
 export interface ICoordinates {

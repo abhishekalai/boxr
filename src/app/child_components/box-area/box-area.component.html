@@ -1,1 +1,13 @@
-<p>box-area works!</p>
+<div class="box-area" id="{{ boxAreaId }}">
+  <!-- <app-box *ngFor="let bx of boxes" [boxState]="bx"></app-box> -->
+  <div *ngFor="let boxState of boxes"
+    class="box-element"
+    id="{{ boxState.id }}"
+    [style.border]="getBorderColor(boxState)"
+    [style.background]="boxState.bgColor"
+    [style.zIndex]="boxState.zIndex"
+    [style.top]="boxState.position.y.toString().concat('px')"
+    [style.left]="boxState.position.x.toString().concat('px')"
+    (click)="selectBox(boxState.id)"
+  ></div>
+</div>
