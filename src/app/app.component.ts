@@ -13,18 +13,6 @@ export class AppComponent {
 
   keyboardEventsEnabled = true;
 
-  private _xInit = 0;
-  get xInit() {
-    this._xInit += 5;
-    return this._xInit;
-  }
-
-  private _yInit = 0;
-  get yInit() {
-    this._yInit += 5;
-    return this._yInit;
-  }
-
   private _zIndex = 0;
 
   get zIndex() {
@@ -55,50 +43,5 @@ export class AppComponent {
 
   toggleKeyboardControls() {
     this.keyboardEventsEnabled = !this.keyboardEventsEnabled;
-  }
-
-  ngAfterViewInit() {
-    const appReference = this;
-    document.onkeydown = (event) => {
-      if (!appReference.keyboardEventsEnabled) {
-        return;
-      }
-
-      const selectedBoxIndex = this.boxes.findIndex(
-        (bx) => bx.selected === true
-      );
-
-      if (selectedBoxIndex < 0) {
-        return;
-      }
-
-      const currentY = this.boxes[selectedBoxIndex].position.y;
-      const currentX = this.boxes[selectedBoxIndex].position.x;
-
-      // For Delete Key Press
-      if (event.code === 'Delete') {
-        this.boxes.splice(selectedBoxIndex, 1);
-      }
-
-      // For 'W' Key Press
-      if (event.code === 'KeyW' || event.code === 'ArrowUp') {
-        this.boxes[selectedBoxIndex].position.y = greaterOf(0, currentY - (event.shiftKey ? 5 : 1));
-      }
-
-      // For 'A' Key Press
-      if (event.code === 'KeyA' || event.code === 'ArrowLeft') {
-        this.boxes[selectedBoxIndex].position.x = greaterOf(0, currentX - (event.shiftKey ? 5 : 1));
-      }
-
-      // For 'S' Key Press
-      if (event.code === 'KeyS' || event.code === 'ArrowDown') {
-        this.boxes[selectedBoxIndex].position.y = lesserOf(500, currentY + (event.shiftKey ? 5 : 1));
-      }
-
-      // For 'D' Key Press
-      if (event.code === 'KeyD' || event.code === 'ArrowRight') {
-        this.boxes[selectedBoxIndex].position.x = lesserOf(800, currentX + (event.shiftKey ? 5 : 1));
-      }
-    };
   }
 }
