@@ -1,1 +1,23 @@
 <app-title-bar [title]="'boxr'"></app-title-bar>
+
+<!-- Main Application -->
+<div class="app-container">
+  <!-- Menu & Console Area-->
+  <div style="width: 25%;" class="app-content-area app-controls-area">
+    <button class="btn btn-primary btn-block" (click)="addBox()">&plus; Add a Box</button>
+
+    <button *ngIf="keyboardEventsEnabled; else kbEventsElse" class="btn btn-danger btn-block" (click)="toggleKeyboardControls()">Disable Keyboard Controls</button>
+
+    <ng-template #kbEventsElse>
+      <button class="btn btn-primary btn-block" (click)="toggleKeyboardControls()">Enable Keyboard Controls</button>
+    </ng-template>
+
+    <app-log-area [logs]="_logs" style="height: 80%;"></app-log-area>
+  </div>
+
+  <!-- Separator -->
+  <div style="border-right: 2px solid grey"></div>
+
+  <!-- Box Playground -->
+  <div style="width: 65%;" class="app-content-area"></div>
+</div>

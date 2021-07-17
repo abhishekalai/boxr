@@ -1,0 +1,13 @@
+.log-area {
+  padding: 0.25rem;
+  border: 1px solid grey;
+  border-radius: 0.5rem;
+  margin-top: 0.5rem;
+  height: 95%;
+  overflow-y: scroll;
+}
+
+.no-events-text {
+  color: grey;
+  text-align: center;
+}

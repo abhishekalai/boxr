@@ -1,0 +1,13 @@
+<div class="log-area" eventsArea>
+  <p>Events:</p>
+
+  <p class="no-events-text" *ngIf="logs.length === 0; else logsArea">No Actions yet</p>
+
+  <ng-template #logsArea>
+    <app-log-element
+      *ngFor="let lg of logs"
+      [boxId]="lg.boxId"
+      [action]="lg.action"
+    ></app-log-element>
+  </ng-template>
+</div>
